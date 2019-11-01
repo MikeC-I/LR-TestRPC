@@ -260,8 +260,8 @@ Function Write-ListResults ($results) {
             $thishost | Add-Member -MemberType NoteProperty -Name SysMsg -Value "N/A"
         }
         else {
-            Switch ($_.PermResult.Results.AppTest.GetType()) {
-                [System.Management.Automation.ErrorRecord] {
+            Switch ($_.PermResult.Results.AppTest.GetType().ToString()) {
+                "System.Management.Automation.ErrorRecord" {
                     $AppResult = "Failed"
                     $AppMsg = $thisresult.PermResult.Results.AppTest
                 }
@@ -270,8 +270,8 @@ Function Write-ListResults ($results) {
                     $AppMsg = "Last Log ID: $($thisresult.PermResult.Results.AppTest.ID)"
                 }
             }
-            Switch ($_.PermResult.Results.SecTest.GetType()) {
-                [System.Management.Automation.ErrorRecord] {
+            Switch ($_.PermResult.Results.SecTest.GetType().ToString()) {
+                "System.Management.Automation.ErrorRecord" {
                     $SecResult = "Failed"
                     $SecMsg = $thisresult.PermResult.Results.SecTest
                 }
@@ -280,8 +280,8 @@ Function Write-ListResults ($results) {
                     $SecMsg = "Last Log ID: $($thisresult.PermResult.Results.SecTest.ID)"
                 }
             }
-            Switch ($_.PermResult.Results.SysTest.GetType()) {
-                [System.Management.Automation.ErrorRecord] {
+            Switch ($_.PermResult.Results.SysTest.GetType().ToString()) {
+                "System.Management.Automation.ErrorRecord" {
                     $SysResult = "Failed"
                     $SysMsg = $thisresult.PermResult.Results.SysTest
                 }
@@ -294,8 +294,8 @@ Function Write-ListResults ($results) {
             $thishost | Add-Member -MemberType NoteProperty -Name SecResult -Value $SecResult
             $thishost | Add-Member -MemberType NoteProperty -Name SysResult -Value $SysResult
             $thishost | Add-Member -MemberType NoteProperty -Name AppMsg -Value $AppMsg
-            $thishost | Add-Member -MemberType NoteProperty -Name SecMsg -Value $SysMsg
-            $thishost | Add-Member -MemberType NoteProperty -Name SysMsg -Value $SecMsg
+            $thishost | Add-Member -MemberType NoteProperty -Name SecMsg -Value $SecMsg
+            $thishost | Add-Member -MemberType NoteProperty -Name SysMsg -Value $SysMsg
         }
         $parsedresults += $thishost
     }
