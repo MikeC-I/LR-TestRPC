@@ -20,9 +20,10 @@
     The script is interactive and designed to be run from the command line, although a non-interactive version may make sense in some cases
     Requires Powershell 5.0 or later for proper functionality
 .NOTES
-    Create by: Mike Contasti-Isaac mcontasti@securesense.ca
+    Create by: Mike Contasti-Isaac
     Changelog:
         2019-07-24: Initial commit
+        2019-11-05: Fixed some broken variables
     To Do:
         -Test and write and everything
     Future Features:
