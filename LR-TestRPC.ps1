@@ -14,8 +14,8 @@
 .SYNOPSIS
     LR-TestRPC.ps1 is a powershell script for testing the necessary networking and permissions requirements for remote Windows event log collection
 .DESCRIPTION
-    LR-GetS3TI.ps1 is a powershell script for testing the necessary networking and permissions requirements for remote Windows event log collection.
-    The script test network connectivity on the necessary ports, as well as permissions if account credentials are provided.
+    LR-TestRPC.ps1 is a powershell script for testing the necessary networking and permissions requirements for remote Windows event log collection.
+    The script tests network connectivity on most of the necessary ports, as well as permissions if account credentials are provided.
     The script can take a single host as an input, or a file containing a list of hosts.
     The script is interactive and designed to be run from the command line, although a non-interactive version may make sense in some cases
     Requires Powershell 5.0 or later for proper functionality
@@ -29,7 +29,7 @@
     Future Features:
         -Non-interactive option
 .PARAMETER Credential
-    When the -Credential switch is used, the script will ask for credentials to use to test permissions against the target host(s)
+    When the -Credential switch is used, the script will ask for credentials to use to test permissions against the target host(s).  Without this only network connectivity will be tested
 .PARAMETER Target
     Use this option followed by a hostname or IP to test against a single host
 .PARAMETER HostFile
@@ -37,7 +37,8 @@
 .PARAMETER Vvv
     For Verbose, This option, when used with a hostfile, will output results with both pass/fail and descriptive messages
 .EXAMPLE
-    LR-TestRPC.ps1 -Credential -Host mytestpc.domain.com
+    LR-TestRPC.ps1 -Credential -Target mytestpc.domain.com
+    LR-TestRPC.ps1 -Hostfile windowshosts.txt -Credential -Vvv
  #>
 
  [CmdletBinding()]
